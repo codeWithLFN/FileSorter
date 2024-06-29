@@ -28,10 +28,9 @@ namespace FileSorter
             Console.WriteLine("Note: This program will move files from your Desktop to categorized folders.");
             Console.WriteLine("==================================================================================");
             Console.WriteLine("Do you want to run the program? (yes or no)");
-            Console.ResetColor();
-
             response = Console.ReadLine();
 
+            // Check if the user wants to run the program
             if (response.ToLower() == "yes")
             {
                 SortFiles();
@@ -40,13 +39,51 @@ namespace FileSorter
             {
                 WaitForExit();
             }
+
+            Console.ResetColor();
         }
 
         static void SortFiles()
         {
             // Define Directory to organize
             string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            string directory = Path.Combine(userDirectory, "Desktop");
+
+            // Define the filepath (Desktop, Downloads, Documents, etc.)
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Enter the directory you want to sort (e.g., Desktop, Downloads, Documents, Pictures, Music, Videos):");
+            string folder = Console.ReadLine();
+            switch (folder.ToLower())
+            {
+                case "desktop":
+                    folder = "Desktop";
+                    break;
+                case "downloads":
+                    folder = "Downloads";
+                    break;
+                case "documents":
+                    folder = "Documents";
+                    break;
+                case "pictures":
+                    folder = "Pictures";
+                    break;
+                case "music":
+                    folder = "Music";
+                    break;
+                case "videos":
+                    folder = "Videos";
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid directory");
+                    Console.ResetColor();
+                    WaitForExit();
+                    return;
+            }
+
+            Console.ResetColor();
+
+            // Combine the user directory and the filepath
+            string directory = Path.Combine(userDirectory, folder);
 
             // Define the extensions and their corresponding folders
             var extensions = new Dictionary<string, string>
