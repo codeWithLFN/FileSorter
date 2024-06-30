@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace FileSorter
+﻿namespace FileSorter
 {
     internal class Program
     {
@@ -25,7 +21,9 @@ namespace FileSorter
             Console.WriteLine("Supported file extensions:");
             Console.WriteLine(".jpg, .jpeg, .png, .gif, .mp4, .mov, .doc, .docx, .pdf, .txt, .xlsx, .pptx, .zip, .rar, .mp3, .wav");
             Console.WriteLine();
-            Console.WriteLine("Note: This program will move files from your Desktop to categorized folders.");
+            Console.WriteLine("Supported directories:");
+            Console.WriteLine("Desktop, Downloads, Documents, Pictures, Music, Videos");
+            Console.WriteLine();
             Console.WriteLine("==================================================================================");
             Console.WriteLine("Do you want to run the program? (yes or no)");
             response = Console.ReadLine();
